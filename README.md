@@ -8,7 +8,7 @@ This project implements a complete end to end data analytics and machine learnin
 
 ## 👥 Team Members
 
-- **Patrice Gallant** (_) 
+- **Patrice Gallant** (40301020) 
 - **Ronnie Chan**  (_)
 - **Nesrine Larbi** (40079009) 
 
