@@ -1,5 +1,5 @@
 """
-Generate Executive Summary PDF for COMP 333 Team D Project.
+Generate Executive Summary PDF for COMP 333 Project.
 """
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
