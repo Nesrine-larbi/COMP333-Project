@@ -130,7 +130,6 @@ story.append(Spacer(1, 0.04 * inch))
 story.append(HRFlowable(width="100%", thickness=2, color=ACCENT, spaceAfter=3))
 story.append(
     Paragraph(
-        "Team D&#160; &#160;|&#160; &#160;"
         "Ronnie Chan (27206003)&#160; &#160;·&#160; &#160;"
         "Patrice Gallant (40301020)&#160; &#160;·&#160; &#160;"
         "Nesrine Larbi (40079009)&#160; &#160;|&#160; &#160;"
@@ -367,7 +366,7 @@ for b in [
 story.append(Spacer(1, 0.06 * inch))
 story.append(HRFlowable(width="100%", thickness=1, color=RULE_GREY, spaceAfter=4))
 story.append(Paragraph(
-    "Concordia University · COMP 333 · Team D · April 2026",
+    "Concordia University · COMP 333 · April 2026",
     meta_style,
 ))
 
@@ -380,8 +379,8 @@ doc = SimpleDocTemplate(
     rightMargin=0.75 * inch,
     topMargin=0.65 * inch,
     bottomMargin=0.65 * inch,
-    title="Executive Summary — COMP 333 Team D",
-    author="Team D: Ronnie Chan, Patrice Gallant, Nesrine Larbi",
+    title="Executive Summary — COMP 333",
+    author="Ronnie Chan, Patrice Gallant, Nesrine Larbi",
 )
 doc.build(story)
 print(f"PDF generated: {OUTPUT_PATH}")
