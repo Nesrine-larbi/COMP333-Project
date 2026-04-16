@@ -87,6 +87,12 @@ bold_body = ParagraphStyle(
     parent=body_style,
     fontName="Helvetica-Bold",
 )
+table_header_style = ParagraphStyle(
+    "table_header",
+    parent=body_style,
+    fontName="Helvetica-Bold",
+    textColor=colors.white,
+)
 caption_style = ParagraphStyle(
     "caption",
     parent=styles["Normal"],
@@ -155,7 +161,7 @@ story.append(Spacer(1, 0.03 * inch))
 
 # Dataset summary table
 ds_data = [
-    [Paragraph("<b>Attribute</b>", bold_body), Paragraph("<b>Detail</b>", bold_body)],
+    [Paragraph("Attribute", table_header_style), Paragraph("Detail", table_header_style)],
     ["Primary Dataset", "NYC Yellow Taxi Trip Records — June & July 2025 (~7.3 M rows, 1.4+ GB on disk)"],
     ["Supplementary", "NYC Hourly Weather (Open-Meteo API) — temperature (°C) and precipitation (mm)"],
     ["Environment", "Google Colab (12.7 GB RAM); Python 3 · pandas · scikit-learn · XGBoost"],
@@ -187,7 +193,7 @@ story.append(Paragraph("<b>Data Wrangling & EDA Highlights</b>", bold_body))
 for b in [
     "Removed 4 exact duplicates and <b>150,444 mirrored records</b>; dropped <b>238,440 zero-distance rows</b>; imputed missing values and applied Winsorization (99th-percentile) to five financial features.",
     "Final clean dataset: <b>14 features</b> across ~7 M records (Parquet). Trip distance is the strongest fare predictor (r = 0.87); credit card accounts for ~75 % of rides; demand peaks post-17:00 on weekdays.",
-    "<b>Baseline (Phase 1):</b> Linear Regression Model B (<i>trip_distance</i> + <i>tip_amount</i>) selected for low MSE, high R², and stable generalisation.",
+    "<b>Baseline (Phase 1):</b> Linear Regression Model 2 (<i>trip_distance</i> + <i>tip_amount</i>) selected for low MSE, high R², and stable generalisation.",
 ]:
     story.append(bullet(b))
 story.append(Spacer(1, 0.06 * inch))
@@ -263,9 +269,9 @@ story.append(Spacer(1, 0.03 * inch))
 # Performance table
 perf_data = [
     [
-        Paragraph("<b>Metric</b>", bold_body),
-        Paragraph("<b>Random Forest</b>", bold_body),
-        Paragraph("<b>XGBoost</b>", bold_body),
+        Paragraph("Metric", table_header_style),
+        Paragraph("Random Forest", table_header_style),
+        Paragraph("XGBoost", table_header_style),
     ],
     ["CV / Val F1-Score",              "0.8637 / 0.8636", "0.8637 / 0.8636"],
     ["Test Accuracy",                  "0.77",            "0.77"],
@@ -316,9 +322,9 @@ story.append(Spacer(1, 0.03 * inch))
 # Cluster table
 cluster_data = [
     [
-        Paragraph("<b>Cluster</b>", bold_body),
-        Paragraph("<b>Label</b>", bold_body),
-        Paragraph("<b>Key Characteristic</b>", bold_body),
+        Paragraph("Cluster", table_header_style),
+        Paragraph("Label", table_header_style),
+        Paragraph("Key Characteristic", table_header_style),
     ],
     ["0",    "Long Trip",         "Highest mean trip distance — airport or inter-borough transfers"],
     ["1, 2", "Short Trip",        "Low distance; likely artificial split of one natural group"],
@@ -353,13 +359,13 @@ story.append(Spacer(1, 0.04 * inch))
 
 for b in [
     "<b>RQ1 — Tipping Behaviour:</b> XGBoost classifies high-tippers with 77 % accuracy (AUC 0.63). "
-    "Tipping is driven by <b>payment method and fare economics</b> — not weather or time of day. "
+    "Tipping is driven by payment method and fare economics — not weather or time of day. "
     "Drivers can expect higher tips on credit-card, high-fare, or airport-rate trips.",
-    "<b>RQ2 — Trip Archetypes:</b> Seven clusters reveal a service dominated by <b>short and medium city trips</b>, "
-    "a strong <b>morning-commute segment</b>, minority long-distance/airport transfers, and a distinct rainy-day cluster — "
+    "<b>RQ2 — Trip Archetypes:</b> Seven clusters reveal a service dominated by short and medium city trips, "
+    "a strong morning-commute segment, minority long-distance/airport transfers, and a distinct rainy-day cluster — "
     "actionable for targeted pricing and dispatching strategies.",
-    "<b>Pipeline scalability:</b> Processing 1.4+ GB within Colab's 12.7 GB RAM required aggressive memory management "
-    "(GC, dtype downcasting, stratified sampling); the pipeline is transferable to cloud-scale environments.",
+    "<b>Pipeline scalability:</b> Processing 1.4+ GB within Colab's 12.7 GB RAM required aggressive memory "
+    "management (GC, dtype downcasting, stratified sampling); the pipeline is transferable to cloud-scale environments.",
 ]:
     story.append(bullet(b))
 
