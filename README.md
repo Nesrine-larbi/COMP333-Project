@@ -6,7 +6,7 @@ Full machine learning pipeline on NYC Yellow Taxi Trip Records, built as the fin
 
 ## Overview
 
-We designed and implemented an end-to-end data science pipeline covering data acquisition, wrangling, exploratory analysis, feature engineering, supervised classification, and unsupervised clustering — applied to 7.3 million real-world taxi trips.
+We designed and implemented an end-to-end data science pipeline covering data acquisition, wrangling, exploratory analysis, feature engineering, supervised classification, and unsupervised clustering — applied to 7.3 million real world taxi trips.
 
 ---
 
@@ -23,7 +23,7 @@ We designed and implemented an end-to-end data science pipeline covering data ac
 | Field | Value |
 |-------|-------|
 | Source | [NYC TLC Yellow Taxi Trip Records](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) |
-| Weather | [Open-Meteo Historical Weather API](https://open-meteo.com/) |
+| Weather | [Open Meteo Historical Weather API](https://open-meteo.com/) |
 | Period | June – July 2025 |
 | Volume | ~7.3M trips · 1.4+ GB (Parquet) |
 | Features | 14 clean features after wrangling |
@@ -33,7 +33,7 @@ We designed and implemented an end-to-end data science pipeline covering data ac
 ## Research Questions
 
 **RQ1 — Supervised Learning**
-> Can we classify a high-tipper passenger based on trip features, rate code, and weather conditions?
+> Can we classify a high tipper passenger based on trip features, rate code, and weather conditions?
 
 - Target: `is_high_tip` (tip ≥ 20% of fare amount)
 - Models: Random Forest, XGBoost
@@ -41,7 +41,7 @@ We designed and implemented an end-to-end data science pipeline covering data ac
 **RQ2 — Unsupervised Learning**
 > Can we identify distinct natural clusters of NYC taxi trips based on temporal and financial features to study customer behavior?
 
-- Method: PCA + MiniBatch K-Means (k = 7)
+- Method: PCA + MiniBatch K Means (k = 7)
 
 ---
 
@@ -53,8 +53,8 @@ Data Acquisition → Wrangling & EDA → Feature Engineering → Supervised Lear
 
 ### Data Wrangling
 - Removed exact duplicates and 150K mirrored (cancelled) entries
-- Dropped 238K zero-distance records and invalid date entries
-- Replaced zero-passenger values with mode; flagged negative fares
+- Dropped 238K zero distance records and invalid date entries
+- Replaced zero passenger values with mode; flagged negative fares
 - Capped outliers at the 99th percentile (Winsorization)
 
 ### Feature Engineering
@@ -73,8 +73,8 @@ Data Acquisition → Wrangling & EDA → Feature Engineering → Supervised Lear
 | Metric | Random Forest | XGBoost |
 |--------|--------------|---------|
 | Test Accuracy | 0.77 | 0.77 |
-| F1-Score (CV) | 0.8637 | 0.8637 |
-| AUC-ROC | 0.6293 | 0.6302 |
+| F1 Score (CV) | 0.8637 | 0.8637 |
+| AUC ROC | 0.6293 | 0.6302 |
 | Avg Precision | 0.8176 | 0.8192 |
 | Train Time | ~250s | ~150s |
 
@@ -87,18 +87,18 @@ Top features: `improvement_surcharge`, `fare_amount`, `congestion_surcharge` —
 | Metric | Value |
 |--------|-------|
 | Silhouette Score | 0.18 |
-| Davies-Bouldin Index | 1.35 |
+| Davies Bouldin Index | 1.35 |
 | PCA components | 6 (≈90% variance) |
 | Clusters | 7 |
 
 | Cluster | Label | Actionable Strategy |
 |---------|-------|-------------------|
-| 0 | Long Trip | Premium pricing · pre-position near JFK/LGA |
+| 0 | Long Trip | Premium pricing · pre position near JFK/LGA |
 | 1–2 | Short Trip | Investigate merging for sharper targeting |
-| 3 | Medium Trip | Standard base-fare offers |
-| 4 | Weather-Impacted | Dynamic surge pricing during rain |
-| 5 | Peak Morning | Pre-position in business districts before 08:00 |
-| 6 | High-Occupancy | Group-ride promotions |
+| 3 | Medium Trip | Standard base fare offers |
+| 4 | Weather Impacted | Dynamic surge pricing during rain |
+| 5 | Peak Morning | Pre position in business districts before 08:00 |
+| 6 | High Occupancy | Group ride promotions |
 
 ---
 
@@ -108,7 +108,7 @@ Top features: `improvement_surcharge`, `fare_amount`, `congestion_surcharge` —
 |----------|-------|
 | Language | Python 3 |
 | Data | pandas, NumPy |
-| ML | scikit-learn, XGBoost |
+| ML | scikit learn, XGBoost |
 | Visualization | matplotlib, seaborn |
 | Environment | Google Colab |
 | Data format | Parquet, CSV |
